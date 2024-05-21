@@ -1,47 +1,21 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+import ModalWrapper from '@/components/ModalWrapper.vue'
+
+const modalOpen = ref(false)
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="body">
+    <h1>Recursive Vue Modal Testing</h1>
+    <button @click="modalOpen = !modalOpen">Launch Modal</button>
+  </div>
+  <ModalWrapper :modalOpen="modalOpen" />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+<style scoped lang="scss">
+.fade-e .body {
+  width: 100%;
+  height: 100%;
 }
 </style>
